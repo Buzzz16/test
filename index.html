@@ -3,32 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Rebahan</title>
+    <title>Kalkulator Rebahan v1.0 — Vintage Monochrome Edition</title>
+    <!-- Vintage & Monospace Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container fade-in">
-        <h1>Kalkulator Rebahan</h1>
-        <p>Hitung jadwal siklus tidur/rebahan optimalmu.</p>
-
-        <div class="input-group">
-            <label for="startTime">Jam Mulai Rebahan:</label>
-            <input type="time" id="startTime" required>
+    <div class="desktop-environment">
+        
+        <!-- Desktop Icons (Left) -->
+        <div class="desktop-icons left-icons">
+            <div class="desktop-icon active">
+                <div class="icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <circle cx="15.5" cy="8.5" r="1.5"/>
+                        <path d="M8 15s1.5 2 4 2 4-2 4-2"/>
+                    </svg>
+                </div>
+                <span>Rebahan.app</span>
+            </div>
+            <div class="desktop-icon" id="presetNowBtn">
+                <div class="icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="9"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <span>Jam_Sekarang</span>
+            </div>
         </div>
 
-        <div class="input-group">
-            <label for="cycles">Berapa Siklus (n):</label>
-            <input type="number" id="cycles" min="1" value="1" required placeholder="Contoh: 3">
+        <!-- Desktop Icons (Right) -->
+        <div class="desktop-icons right-icons">
+            <div class="desktop-icon">
+                <div class="icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </div>
+                <span>Docs</span>
+            </div>
+            <div class="desktop-icon">
+                <div class="icon-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"/>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                    </svg>
+                </div>
+                <span>Trash</span>
+            </div>
         </div>
 
-        <button id="calculateBtn">Hitung Waktu Bangun</button>
+        <!-- Main Vintage Window Container -->
+        <div class="window-frame fade-in">
+            <!-- Window Titlebar -->
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="control-btn close"></span>
+                    <span class="control-btn minimize"></span>
+                    <span class="control-btn maximize"></span>
+                </div>
+                <div class="window-title">
+                    <span class="title-icon">⏱</span>
+                    <span>System 7.5 — Kalkulator Rebahan</span>
+                </div>
+                <div class="window-meta">
+                    <span class="badge-mem">RAM: 640KB</span>
+                </div>
+            </div>
 
-        <div id="result" class="result-container hidden">
-            <h2>Jadwal Bangunmu:</h2>
-            <ul id="scheduleList"></ul>
+            <!-- Window Body Layout (Sidebar + Content) -->
+            <div class="window-body">
+                
+                <!-- Retro Sidebar -->
+                <div class="retro-sidebar">
+                    <div class="sidebar-section">
+                        <div class="sidebar-dropdown">
+                            <span>SiklusTidur v1</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-menu">
+                        <div class="menu-label">
+                            <span class="folder-icon">📂</span> Siklus Info
+                        </div>
+                        <ul class="sidebar-list">
+                            <li class="active" data-cycle-select="90">
+                                <span class="hash">#</span> 90m-standar <span class="tag-count">Rec</span>
+                            </li>
+                            <li data-cycle-select="60">
+                                <span class="hash">#</span> 60m-singkat
+                            </li>
+                            <li data-cycle-select="120">
+                                <span class="hash">#</span> 120m-nyenyak
+                            </li>
+                        </ul>
+
+                        <div class="menu-label margin-top">
+                            <span class="folder-icon">📂</span> Rules
+                        </div>
+                        <div class="sidebar-info-box">
+                            <p class="prep-note">⏱ <strong>+15 Menit</strong> persiapan awal sebelum tidur lelap.</p>
+                        </div>
+                    </div>
+
+                    <!-- Dither Pattern Footer in Sidebar -->
+                    <div class="sidebar-footer">
+                        <div class="dither-bar"></div>
+                        <span>STATUS: READY</span>
+                    </div>
+                </div>
+
+                <!-- Main Content Pane -->
+                <div class="retro-main">
+                    <div class="content-header">
+                        <h2># kalkulator-rebahan</h2>
+                        <span class="meta-info">Siklus Tidur & Waktu Bangun Optimal</span>
+                    </div>
+
+                    <!-- Form Inputs -->
+                    <div class="form-container">
+                        
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label for="startTime">
+                                    <span class="label-icon">🕒</span> Jam Mulai Rebahan:
+                                </label>
+                                <div class="input-with-button">
+                                    <input type="time" id="startTime" required>
+                                    <button type="button" id="setNowBtn" class="btn-secondary" title="Gunakan Jam Sekarang">NOW</button>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="cycleDuration">
+                                    <span class="label-icon">⏱</span> Durasi Siklus (menit):
+                                </label>
+                                <select id="cycleDuration" class="retro-select" required>
+                                    <option value="60">60 Menit (Power Nap / Singkat)</option>
+                                    <option value="90" selected>90 Menit (Standar REM - Direkomendasikan)</option>
+                                    <option value="120">120 Menit (Deep Sleep / Nyenyak)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="input-row">
+                            <div class="input-group full-width">
+                                <label for="cycles">
+                                    <span class="label-icon">🔄</span> Berapa Siklus (n):
+                                </label>
+                                <div class="number-input-wrapper">
+                                    <input type="number" id="cycles" min="1" max="12" value="4" required placeholder="Contoh: 4">
+                                    <span class="input-hint">Rekomendasi: 4 - 6 siklus</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="calculateBtn" class="retro-btn-primary">
+                            <span class="btn-text">[ HITUNG WAKTU BANGUN ]</span>
+                        </button>
+                    </div>
+
+                    <!-- Result Output -->
+                    <div id="result" class="result-container hidden">
+                        <div class="result-header">
+                            <h3>📋 JADWAL BANGUN DISETUJUI:</h3>
+                            <span class="prep-badge">+15m Waktu Persiapan Terhitung</span>
+                        </div>
+                        
+                        <div class="summary-box" id="summaryBox">
+                            <!-- Populated dynamically -->
+                        </div>
+
+                        <ul id="scheduleList" class="schedule-list">
+                            <!-- Populated dynamically -->
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Vintage Window Statusbar -->
+            <div class="window-footer">
+                <span>[LOG] +15m onset offset applied</span>
+                <span id="footerClock">00:00:00</span>
+            </div>
         </div>
+
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
