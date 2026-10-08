@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Rebahan</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container fade-in">
+        <h1>Kalkulator Rebahan</h1>
+        <p>Hitung jadwal siklus tidur/rebahan optimalmu.</p>
+
+        <div class="input-group">
+            <label for="startTime">Jam Mulai Rebahan:</label>
+            <input type="time" id="startTime" required>
+        </div>
+
+        <div class="input-group">
+            <label for="cycles">Berapa Siklus (n):</label>
+            <input type="number" id="cycles" min="1" value="1" required placeholder="Contoh: 3">
+        </div>
+
+        <button id="calculateBtn">Hitung Waktu Bangun</button>
+
+        <div id="result" class="result-container hidden">
+            <h2>Jadwal Bangunmu:</h2>
+            <ul id="scheduleList"></ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
